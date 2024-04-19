@@ -12,3 +12,11 @@ produto: CreateProdutoDto
 ): Promise<Produto> {
 return await prisma.produto.create({ data: produto });
 }
+
+export const ListProdutos = async(): Promise<Produto[]>=>{
+    return await prisma.produto.findMany();
+};
+
+export const readProduto = async(id: string): Promise<Produto|null>=>{
+    return await prisma.produto.findUnique({where: {id}});
+}
